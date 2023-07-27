@@ -7,10 +7,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Controller {
-    Scanner sc = new Scanner(System.in);
     View v = new View();
     RegistryOfPets rp;
     DataBase db = new DataBase(rp);
+
 
 
     public Controller() {
@@ -20,7 +20,7 @@ public class Controller {
         this.rp = db.readDataFromFile();
         v.start_menu();
         String choise;
-        try {
+        try(Scanner sc = new Scanner(System.in);Counter counter = new Counter()) {
             do {
                 v.menu();
                 choise = sc.nextLine();
@@ -32,6 +32,7 @@ public class Controller {
                     case "2":
                         //Завести новое животное
                         rp.addNewAnimal();
+                        counter.add();
                         break;
                     case "3":
                         //Увидеть список команд, которое выполняет животное
@@ -53,6 +54,8 @@ public class Controller {
             } while (!choise.equals("0"));
         } catch (InputMismatchException a) {
             System.out.println("Введено неверное значение!");
+        } catch (Exception e) {
+            System.out.println("Counter dead");
         }
     }
 }
