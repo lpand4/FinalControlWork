@@ -1,0 +1,4 @@
+gosha;[gav, eda];DOG
+ksu;[myau, beg, pit];CAT
+erzhan;[beg, pluvat, nosit];CAMEL
+timon;[myau, prigat, wow];CAT
